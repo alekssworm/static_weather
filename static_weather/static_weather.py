@@ -9,18 +9,20 @@ with open(filename) as f:
     reader = csv.reader(f)
     header_row = next(reader)
 
-    dates, highs = [], []
+    dates, highs, lows = [], [], []
     for row in reader:
         current_date = datetime.strptime(row[0], "%Y-%m-%d")
         dates.append(current_date)
-        highs.append(int(row[1]))  
+        highs.append(int(row[1]))
+        low = int(row[3])
+        lows.append(low)
 
 
 fig, ax = plt.subplots(dpi=128, figsize=(10, 6))
 
 
-ax.plot(dates, highs, c='red')
-
+plt.plot(dates, highs, c='red')
+plt.plot(dates, lows, c='blue')
 
 ax.set_title("Daily high temperatures, July 2014", fontsize=24)
 ax.set_xlabel('', fontsize=16)
