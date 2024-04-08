@@ -19,10 +19,9 @@ with open(filename) as f:
 
 
 fig, ax = plt.subplots(dpi=128, figsize=(10, 6))
-
-
-plt.plot(dates, highs, c='red')
-plt.plot(dates, lows, c='blue')
+plt.plot(dates, highs, c='red', alpha=0.5)
+plt.plot(dates, lows, c='blue', alpha=0.5)
+plt.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
 ax.set_title("Daily high temperatures, July 2014", fontsize=24)
 ax.set_xlabel('', fontsize=16)
